@@ -10,20 +10,27 @@ import lombok.Data;
 @Table(name = "characters")
 public class Characters implements Serializable {
 
-    private static long serialVersionUID = 1l;
+    private static final long serialVersionUID = 1l;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private String id_character;
+    private Long id_character;
 
     private String image;
 
     @NotEmpty
     private String name;
 
-    private String age;
-    private String wheigt;
+    @NotEmpty
+    private Integer age;
+
+    @NotEmpty
+    private Integer wheigt;
+
+    @NotEmpty
     private String story;
+
+    @NotEmpty
     private String associated_movies;
 
 }
