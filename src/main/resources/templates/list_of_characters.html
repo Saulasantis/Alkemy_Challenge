@@ -6,8 +6,27 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body>
+        <header>
+            <ul>
+                
+                <li><a th:href="@{/}">Inicio</a></li>
+                <li><a th:href="@{list_of_characters}">Listado de Personajes</a></li>
+            </ul>
+        </header>
+        
         
         <h1>Listado de Personajes</h1>
-        <p th:text="Holanda"></p>
+        <div>
+            <table border="1">
+                <tr>
+                    <th>Imagen</th>
+                    <th>Nombre</th>
+                </tr>
+                <tr th:each="characters: ${character}">
+                    <td th:text="${characters.image}"></td>
+                    <td th:text="${characters.name}"></td>
+                </tr>
+            </table>            
+        </div>
     </body>
 </html>

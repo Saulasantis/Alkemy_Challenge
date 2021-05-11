@@ -25,7 +25,7 @@ public class Characters implements Serializable {
     private Integer age;
 
     @NotEmpty
-    private Integer wheigt;
+    private Integer weight;
 
     @NotEmpty
     private String story;
