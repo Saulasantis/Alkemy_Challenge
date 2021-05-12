@@ -14,9 +14,10 @@
             </ul>
         </header>  
         <h1>Creación de Personaje</h1>
-        <a th:href="@{list_of_characters}">Regresar</a>  
+        <a th:href="@{/list_of_characters}">Regresar</a>  
         <br></br>
         <form th:action="@{/save_character}" method="post" th:object="${characters}">
+            <input type="hidden" name="id_character" th:field="*{id_character}"/>
             <label for="image">Imagen:</label> 
             <input type="text" name="image" th:field="*{image}"/>
             <br/>
@@ -34,7 +35,7 @@
             <br/>
             <label for="associated_movies">Peliculas o series asociadas:</label> 
             <input type="text" name="associated_movies" th:field="*{associated_movies}"/>
-            <br/>
+            <br></br>
             <input type="submit" name="save_character" value="Guardar"/>
             
             

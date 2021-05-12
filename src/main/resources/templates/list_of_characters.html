@@ -22,10 +22,16 @@
                 <tr>
                     <th>Imagen</th>
                     <th>Nombre</th>
+                    <th>Detalles</th>
+                    <th>Editar</th>
+                    <th>Eliminar</th>
                 </tr>
                 <tr th:each="characters: ${character}">
                     <td th:text="${characters.image}"></td>
                     <td th:text="${characters.name}"></td>
+                    <td></td>
+                    <td> <a th:href="@{/edit_characters/} + ${characters.id_character}" th:text="Editar"></a></td>
+                    <td> <a th:href="@{/delete_characters(id_character=${characters.id_character})}" th:text="Eliminar"></a></td>
                 </tr>
             </table>            
         </div>

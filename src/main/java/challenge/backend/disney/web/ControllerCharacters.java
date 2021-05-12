@@ -37,4 +37,17 @@ public class ControllerCharacters {
         return "redirect:list_of_characters";
     }
 
+    @GetMapping("/edit_characters/{id_character}")
+    public String edit_characters(Characters characters, Model model) {
+        characters = characterService.findCharacters(characters);
+        model.addAttribute("characters", characters);
+        return "create_character";
+    }
+
+    @GetMapping("/delete_characters")
+    public String delete_characters(Characters characters) {
+        characterService.deleteCharacters(characters);
+        return "redirect:/list_of_characters";
+    }
+
 }
