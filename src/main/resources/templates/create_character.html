@@ -14,6 +14,13 @@
             </ul>
         </header>  
         <h1>Creación de Personaje</h1>
-        <a th:href="@{list_of_characters}">Regresar</a>        
+        <a th:href="@{list_of_characters}">Regresar</a>  
+        <br></br>
+        <form th:action="@{/save_character}" method="post" th:objects="${characters}">
+            <label for="image">Imagen:</label>
+            <input type="text" name="image" th:field="*{image}"/>
+
+        </form>
+
     </body>
 </html>
