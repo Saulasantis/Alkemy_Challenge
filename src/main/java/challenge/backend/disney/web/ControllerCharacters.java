@@ -1,6 +1,7 @@
 package challenge.backend.disney.web;
 
-import challenge.backend.disney.dao.CharacterDao;
+import challenge.backend.disney.domain.Characters;
+import challenge.backend.disney.service.CharacterService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -10,7 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class ControllerCharacters {
 
     @Autowired
-    private CharacterDao characterDao;
+    private CharacterService characterService;
 
     @GetMapping("/")
     public String index(Model model) {
@@ -19,9 +20,14 @@ public class ControllerCharacters {
 
     @GetMapping("/list_of_characters")
     public String list_of_characters(Model model) {
-        var character = characterDao.findAll();
+        var character = characterService.listCharacters();
         model.addAttribute("character", character);
         return "list_of_characters";
+    }
+
+    @GetMapping("/add_character")
+    public String add_character(Characters characters) {
+        return "create_character";
     }
 
 }
