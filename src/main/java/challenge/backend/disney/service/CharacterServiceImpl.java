@@ -38,6 +38,7 @@ public class CharacterServiceImpl implements CharacterService {
     }
 
     @Override
+    @Transactional(readOnly = true)
     public Characters detailsCharacters(Characters characters) {
         return characterDao.findById(characters.getId_character()).orElse(null);
     }

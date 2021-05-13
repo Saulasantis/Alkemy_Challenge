@@ -19,7 +19,7 @@
         <a th:href="@{/list_of_characters}">Regresar</a> 
         <br></br>
         
-        <div th:if="${character != null and !character.empty}">
+        <div>
             <table border="1">
                 <tr>
                     <th>Imagen</th>
@@ -39,8 +39,6 @@
                 </tr>
             </table>            
         </div>
-        <div th:if="${character == null or character.empty}">
-            El detalle de Personajes esta vacio.
-        </div>   
+           
     </body>
 </html>
