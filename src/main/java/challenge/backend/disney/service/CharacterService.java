@@ -12,4 +12,7 @@ public interface CharacterService {
     public void deleteCharacters(Characters characters);
 
     public Characters findCharacters(Characters characters);
+
+    public Characters detailsCharacters(Characters characters);
+
 }

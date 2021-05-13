@@ -34,10 +34,10 @@ public class ControllerCharacters {
     @PostMapping("/save_character")
     public String save_character(Characters characters) {
         characterService.saveCharacters(characters);
-        return "redirect:list_of_characters";
+        return "redirect:/list_of_characters";
     }
 
-    @GetMapping("/edit_characters/{id_character}")
+    @GetMapping("/edit_characters")
     public String edit_characters(Characters characters, Model model) {
         characters = characterService.findCharacters(characters);
         model.addAttribute("characters", characters);
@@ -48,6 +48,13 @@ public class ControllerCharacters {
     public String delete_characters(Characters characters) {
         characterService.deleteCharacters(characters);
         return "redirect:/list_of_characters";
+    }
+
+    @GetMapping("/details_characters")
+    public String details_characters(Characters characters, Model model) {
+        characters = characterService.findCharacters(characters);
+        model.addAttribute("characters", characters);
+        return "details_of_characters";
     }
 
 }

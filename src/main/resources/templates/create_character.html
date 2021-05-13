@@ -16,7 +16,7 @@
         <h1>Creación de Personaje</h1>
         <a th:href="@{/list_of_characters}">Regresar</a>  
         <br></br>
-        <form th:action="@{/save_character}" method="post" th:object="${characters}">
+        <form th:action="@{/save_character}" method="post" th:object="${characters}" enctype="multipart/form-data">
             <input type="hidden" name="id_character" th:field="*{id_character}"/>
             <label for="image">Imagen:</label> 
             <input type="text" name="image" th:field="*{image}"/>

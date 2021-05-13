@@ -37,4 +37,9 @@ public class CharacterServiceImpl implements CharacterService {
         return characterDao.findById(characters.getId_character()).orElse(null);
     }
 
+    @Override
+    public Characters detailsCharacters(Characters characters) {
+        return characterDao.findById(characters.getId_character()).orElse(null);
+    }
+
 }
