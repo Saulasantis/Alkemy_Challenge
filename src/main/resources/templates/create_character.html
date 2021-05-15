@@ -7,12 +7,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     </head>
     <body>
-        <header>
-            <ul>                
-                <li><a th:href="@{/}">Inicio</a></li>
-                <li><a th:href="@{list_of_characters}">Listado de Personajes</a></li>
-            </ul>
-        </header>  
+        <header th:replace="layout/template :: header"></header> 
+
         <h1>Creación de Personaje</h1>
         <a th:href="@{/list_of_characters}">Regresar</a>  
         <br></br>
@@ -29,7 +25,7 @@
             <input type="text" name="age" th:field="*{age}"/>
             <span th:if="${#fields.hasErrors('age')}" th:errors="*{age}">Error en la edad</span>
             <br/>
-            <label for="weight">Peso:</label> 
+            <label for="weight">Peso (Kg):</label> 
             <input type="text" name="weight" th:field="*{weight}"/>
             <span th:if="${#fields.hasErrors('weight')}" th:errors="*{weight}">Error en el peso</span>
             <br/>
@@ -43,11 +39,13 @@
             <span th:if="${#fields.hasErrors('associated_movies')}" th:errors="*{associated_movies}">Error en el campo</span>
             <br></br>
             <input type="submit" name="save_character" value="Guardar"/>
-            
-            
-                       
+
+
+
         </form>
 
-
+        <footer th:fragment="footer">
+            <p>Todos los derechos reservados - Saúl Santibáñez ©</p>
+        </footer>
     </body>
 </html>

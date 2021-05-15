@@ -7,12 +7,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     </head>
     <body>
-        <header>
-            <ul>                
-                <li><a th:href="@{/}">Inicio</a></li>
-                <li><a th:href="@{list_of_characters}">Listado de Personajes</a></li>
-            </ul>
-        </header>
+        <header th:replace="layout/template :: header"></header> 
         
         <h1>Detalle de Personajes</h1>
         
@@ -39,6 +34,10 @@
                 </tr>
             </table>            
         </div>
+        
+        <footer th:fragment="footer">
+            <p>Todos los derechos reservados - Saúl Santibáñez ©</p>
+        </footer>
            
     </body>
 </html>
