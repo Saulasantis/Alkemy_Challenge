@@ -23,19 +23,24 @@
             <br/>
             <label for="name">Nombre:</label> 
             <input type="text" name="name" th:field="*{name}"/>
+            <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Error en el nombre</span>
             <br/>
             <label for="age">Edad:</label> 
             <input type="text" name="age" th:field="*{age}"/>
+            <span th:if="${#fields.hasErrors('age')}" th:errors="*{age}">Error en la edad</span>
             <br/>
             <label for="weight">Peso:</label> 
             <input type="text" name="weight" th:field="*{weight}"/>
+            <span th:if="${#fields.hasErrors('weight')}" th:errors="*{weight}">Error en el peso</span>
             <br/>
             <label for="story">Historia:</label> 
             <br/>
             <textarea rows="10" cols="40" name="story" th:field="*{story}">Escribe la Historia aquí.</textarea>
+            <span th:if="${#fields.hasErrors('story')}" th:errors="*{story}">Error en la historia</span>
             <br/>
             <label for="associated_movies">Peliculas o series asociadas:</label> 
             <input type="text" name="associated_movies" th:field="*{associated_movies}"/>
+            <span th:if="${#fields.hasErrors('associated_movies')}" th:errors="*{associated_movies}">Error en el campo</span>
             <br></br>
             <input type="submit" name="save_character" value="Guardar"/>
             

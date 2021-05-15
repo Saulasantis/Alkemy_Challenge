@@ -2,7 +2,10 @@ package challenge.backend.disney.domain;
 
 import java.io.Serializable;
 import javax.persistence.*;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+
 import lombok.Data;
 
 @Data
@@ -21,11 +24,13 @@ public class Characters implements Serializable {
     @NotEmpty
     private String name;
 
-    @NotEmpty
-    private Integer age;
+    @NotNull
+    @Min(1)
+    private int age;
 
-    @NotEmpty
-    private Integer weight;
+    @NotNull
+    @Min(1)
+    private int weight;
 
     @NotEmpty
     private String story;

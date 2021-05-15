@@ -2,9 +2,12 @@ package challenge.backend.disney.web;
 
 import challenge.backend.disney.domain.Characters;
 import challenge.backend.disney.service.CharacterService;
+import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+//import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
@@ -32,7 +35,10 @@ public class ControllerCharacters {
     }
 
     @PostMapping("/save_character")
-    public String save_character(Characters characters) {
+    public String save_character(@Valid Characters characters, BindingResult result) {
+        if (result.hasErrors()) {
+            return "create_character";
+        }
         characterService.saveCharacters(characters);
         return "redirect:/list_of_characters";
     }
