@@ -18,7 +18,13 @@
         <h1>Explora el Mundo Disney</h1> 
         
         <footer th:fragment="footer">
-            <p th:text="#{template.footer}"></p>
+            <div>
+                <p th:text="#{template.footer}"></p>
+                <form method="POST" th:action="@{/logout}">
+                    <a href="#" onclick="this.parentNode.submit();">Logout</a>
+                </form>
+            </div>
+            
         </footer>
     </body>
 </html>
