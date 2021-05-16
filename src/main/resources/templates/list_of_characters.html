@@ -8,35 +8,33 @@
     </head>
     <body>
         <header th:replace="layout/template :: header"></header>   
-        
-        <h1>Listado de Personajes</h1>
-        <a th:href="@{/add_character}">Crear Personaje</a>
+        <h1 th:text="#{characters.titulo.h1}"></h1>
+        <h2 th:text="#{characters.titulo.h2}"></h2>
+        <a th:href="@{/add_character}" th:text="#{character.create}"></a>
         <br></br>
         
         <div th:if="${character != null and !character.empty}">
             <table border="1">
                 <tr>
-                    <th>Imagen</th>
-                    <th>Nombre</th>
-                    <th>Detalles</th>
-                    <th>Editar</th>
-                    <th>Eliminar</th>
+                    <th th:text="#{character.form_image}"></th>
+                    <th th:text="#{character.form_name}"></th>
+                    <th th:text="#{character.form_details}"></th>
+                    <th th:text="#{character.form_edit}"></th>
+                    <th th:text="#{character.form_delete}"></th>
                 </tr>
                 <tr th:each="characters: ${character}">
                     <td th:text="${characters.image}"></td>
                     <td th:text="${characters.name}"></td>
-                    <td> <a th:href="@{/details_characters(id_character=${characters.id_character})}" th:text="Detalles"></a></td>
-                    <td> <a th:href="@{/edit_characters(id_character=${characters.id_character})}" th:text="Editar"></a></td>
-                    <td> <a th:href="@{/delete_characters(id_character=${characters.id_character})}" th:text="Eliminar"></a></td>
+                    <td> <a th:href="@{/details_characters(id_character=${characters.id_character})}" th:text="#{action.details}"></a></td>
+                    <td> <a th:href="@{/edit_characters(id_character=${characters.id_character})}" th:text="#{action.edit}"></a></td>
+                    <td> <a th:href="@{/delete_characters(id_character=${characters.id_character})}" th:text="#{action.delete}"></a></td>
                 </tr>
             </table>            
         </div>
         <div th:if="${character == null or character.empty}">
-            El listado de Personajes esta vacio.
+            th:text="#{character.empty_list}"
         </div>
         
-        <footer th:fragment="footer">
-            <p>Todos los derechos reservados - Saúl Santibáñez ©</p>
-        </footer>
+        <footer th:replace="layout/template :: footer"></footer>
     </body>
 </html>

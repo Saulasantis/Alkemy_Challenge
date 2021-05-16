@@ -9,15 +9,16 @@
     <body>
         <header th:fragment="header">
             <ul>                
-                <li><a th:href="@{/}">Inicio</a></li>
-                <li><a th:href="@{list_of_characters}">Listado de Personajes</a></li>
-                <li><a th:href="@{Login}">Login</a></li>
+                <li><a th:href="@{/}">[[#{character.header_index}]]</a></li>
+                <li><a th:href="@{list_of_characters}">[[#{character.header_listOfCharacters}]]</a></li>
+                <li><a th:href="@{list_of_movies}">[[#{character.header_listOfMovies}]]</a></li>
+                <li><a th:href="@{login}">[[#{character.header_login}]]</a></li>
             </ul>
         </header>
         <h1>Explora el Mundo Disney</h1> 
         
         <footer th:fragment="footer">
-            <p>Todos los derechos reservados - Saúl Santibáñez ©</p>
+            <p th:text="#{template.footer}"></p>
         </footer>
     </body>
 </html>
