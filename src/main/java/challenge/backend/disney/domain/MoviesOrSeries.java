@@ -7,6 +7,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import lombok.Data;
 
 @Data
@@ -28,8 +29,8 @@ public class MoviesOrSeries implements Serializable {
     @NotEmpty
     private String creation_date;
 
-    @NotEmpty
-    private Integer classification;
+    @NotNull
+    private int classification;
 
     @NotEmpty
     private String associated_characters;

@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-//import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
@@ -22,8 +21,8 @@ public class ControllerCharacters {
         return "index";
     }
 
-    @GetMapping("/list_of_characters")
-    public String list_of_characters(Model model) {
+    @GetMapping("/characters")
+    public String characters(Model model) {
         var character = characterService.listCharacters();
         model.addAttribute("character", character);
         return "list_of_characters";
@@ -47,7 +46,7 @@ public class ControllerCharacters {
     public String edit_characters(Characters characters, Model model) {
         characters = characterService.findCharacters(characters);
         model.addAttribute("characters", characters);
-        return "create_character";
+        return "edit_character";
     }
 
     @GetMapping("/delete_characters")

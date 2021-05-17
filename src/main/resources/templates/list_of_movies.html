@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>Listado de Peliculas o Series</title>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </head>
+    <body>
+        <header th:replace="layout/template :: header"></header>   
+        <h1 th:text="#{titulo.principal_h1}"></h1>
+        <h2 th:text="#{list_of_movies.titulo.h2}"></h2>
+        <a th:href="@{/add_character}" th:text="#{list_of_movies.create}"></a>
+        <br></br>
+        
+        <div th:if="${movies_or_series != null and !movies_or_series.empty}">
+            <table border="1">
+                <tr>
+                    <th th:text="#{list_of_movies.form_image}"></th>
+                    <th th:text="#{list_of_movies.form_title}"></th>
+                    <th th:text="#{list_of_movies.form_creation_date}"></th>
+                    <th th:text="#{list_of_movies.form_details}"></th>
+                    <th th:text="#{list_of_movies.form_edit}"></th>
+                    <th th:text="#{list_of_movies.form_delete}"></th>
+                </tr>
+                <tr th:each="moviesOrSeries: ${movies_or_series}">
+                    <td th:text="${moviesOrSeries.image}"></td>
+                    <td th:text="${moviesOrSeries.title}"></td>
+                    <td th:text="${moviesOrSeries.creation_date}"></td>
+<!--                    <td> <a th:href="@{/details_characters(id_character=${characters.id_character})}" th:text="#{action.details}"></a></td>
+                    <td> <a th:href="@{/edit_characters(id_character=${characters.id_character})}" th:text="#{action.edit}"></a></td>
+                    <td> <a th:href="@{/delete_characters(id_character=${characters.id_character})}" th:text="#{action.delete}"></a></td>-->
+                </tr>
+            </table>            
+        </div>
+        <div th:if="${movies_or_series == null or movies_or_series.empty}">
+            [[#{list_of_movies.empty_list}]]
+        </div>
+        
+        <footer th:replace="layout/template :: footer"></footer>
+    </body>
+</html>

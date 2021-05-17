@@ -10,8 +10,8 @@
         <header th:fragment="header">
             <ul>                
                 <li><a th:href="@{/}">[[#{character.header_index}]]</a></li>
-                <li><a th:href="@{list_of_characters}">[[#{character.header_listOfCharacters}]]</a></li>
-                <li><a th:href="@{list_of_movies}">[[#{character.header_listOfMovies}]]</a></li>
+                <li><a th:href="@{/characters}">[[#{character.header_listOfCharacters}]]</a></li>
+                <li><a th:href="@{/movies}">[[#{character.header_listOfMovies}]]</a></li>
                 <li><a th:href="@{login}">[[#{character.header_login}]]</a></li>
             </ul>
         </header>

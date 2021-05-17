@@ -2,13 +2,13 @@
 <html xmlns:th="http://www.thymeleaf.org"
       xmlns="http://www.w3.org/1999/xhtml">
     <head>
-        <title>Creación de Personaje</title>
+        <title>Listado de Personajes</title>
         <meta charset="UTF-8"/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     </head>
     <body>
         <header th:replace="layout/template :: header"></header>   
-        <h1 th:text="#{characters.titulo.h1}"></h1>
+        <h1 th:text="#{titulo.principal_h1}"></h1>
         <h2 th:text="#{characters.titulo.h2}"></h2>
         <a th:href="@{/add_character}" th:text="#{character.create}"></a>
         <br></br>
@@ -32,7 +32,7 @@
             </table>            
         </div>
         <div th:if="${character == null or character.empty}">
-            th:text="#{character.empty_list}"
+            [[#{character.empty_list}]]
         </div>
         
         <footer th:replace="layout/template :: footer"></footer>
