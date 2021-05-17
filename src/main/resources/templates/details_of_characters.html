@@ -9,10 +9,10 @@
     <body>
         <header th:replace="layout/template :: header"></header> 
         
-        <h1 th:text="#{characters.titulo.h1}"></h1>
+        <h1 th:text="#{titulo.principal_h1}"></h1>
         <h2 th:text="#{details.titulo.h2}"></h2>
         
-        <a th:href="@{/list_of_characters}" th:text="#{details.regresar}"></a> 
+        <a th:href="@{/characters}" th:text="#{details.regresar}"></a> 
         <br></br>
         
         <div>
