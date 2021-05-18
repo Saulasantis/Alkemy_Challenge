@@ -16,11 +16,6 @@ public class ControllerCharacters {
     @Autowired
     private CharacterService characterService;
 
-    @GetMapping("/")
-    public String index(Model model) {
-        return "index";
-    }
-
     @GetMapping("/characters")
     public String characters(Model model) {
         var character = characterService.listCharacters();

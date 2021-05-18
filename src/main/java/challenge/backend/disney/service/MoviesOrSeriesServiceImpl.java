@@ -34,13 +34,13 @@ public class MoviesOrSeriesServiceImpl implements MoviesOrSeriesService {
     @Override
     @Transactional(readOnly = true)
     public MoviesOrSeries findMoviesOrSeries(MoviesOrSeries moviesOrSeries) {
-        return moviesOrSeriesDao.findById(moviesOrSeries.getId_movies_or_series()).orElse(null);
+        return moviesOrSeriesDao.findById(moviesOrSeries.getId_movies()).orElse(null);
     }
 
     @Override
     @Transactional(readOnly = true)
     public MoviesOrSeries detailsMoviesOrSeries(MoviesOrSeries moviesOrSeries) {
-        return moviesOrSeriesDao.findById(moviesOrSeries.getId_movies_or_series()).orElse(null);
+        return moviesOrSeriesDao.findById(moviesOrSeries.getId_movies()).orElse(null);
     }
 
 }

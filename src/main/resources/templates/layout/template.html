@@ -12,7 +12,11 @@
                 <li><a th:href="@{/}">[[#{character.header_index}]]</a></li>
                 <li><a th:href="@{/characters}">[[#{character.header_listOfCharacters}]]</a></li>
                 <li><a th:href="@{/movies}">[[#{character.header_listOfMovies}]]</a></li>
-                <li><a th:href="@{login}">[[#{character.header_login}]]</a></li>
+                <li>
+                    <form method="POST" th:action="@{/logout}">
+                    <a href="#" onclick="this.parentNode.submit();">Logout</a>
+                </form>
+                </li>
             </ul>
         </header>
         <h1>Explora el Mundo Disney</h1> 
@@ -20,9 +24,6 @@
         <footer th:fragment="footer">
             <div>
                 <p th:text="#{template.footer}"></p>
-                <form method="POST" th:action="@{/logout}">
-                    <a href="#" onclick="this.parentNode.submit();">Logout</a>
-                </form>
             </div>
             
         </footer>
