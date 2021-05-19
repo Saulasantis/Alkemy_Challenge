@@ -23,7 +23,7 @@
                     <th th:text="#{character.form_delete}"></th>
                 </tr>
                 <tr th:each="characters: ${character}">
-                    <td th:text="${characters.image}"></td>
+                    <td><img th:src="characters.image" alt="alt"/></td>
                     <td th:text="${characters.name}"></td>
                     <td> <a th:href="@{/details_characters(id_character=${characters.id_character})}" th:text="#{action.details}"></a></td>
                     <td> <a th:href="@{/edit_characters(id_character=${characters.id_character})}" th:text="#{action.edit}"></a></td>
