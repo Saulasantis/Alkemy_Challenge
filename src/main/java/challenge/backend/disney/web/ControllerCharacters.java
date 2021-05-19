@@ -34,7 +34,7 @@ public class ControllerCharacters {
             return "create_character";
         }
         characterService.saveCharacters(characters);
-        return "redirect:/list_of_characters";
+        return "redirect:/characters";
     }
 
     @GetMapping("/edit_characters")
