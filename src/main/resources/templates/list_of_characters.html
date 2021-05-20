@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
-      xmlns="http://www.w3.org/1999/xhtml">
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
     <head>
         <title>Listado de Personajes</title>
         <meta charset="UTF-8"/>
@@ -11,7 +12,7 @@
         <h1 th:text="#{titulo.principal_h1}"></h1>
         <h2 th:text="#{characters.titulo.h2}"></h2>
         <div>
-            <h3>Busqueda de Personajes</h3>
+            <h3>Buscar de Personajes</h3>
             <b>Nombre:</b>
             <input type="text"/>
             <br>
@@ -24,24 +25,25 @@
             <br></br>
             <input type="submit" value="Buscar"/>
         </div>
-        <br></br>     
-        <a th:href="@{/add_character}" th:text="#{character.create}"></a>
+        <br></br> 
+        
+        <a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/add_character}" th:text="#{character.create}"></a>
         <br></br>
         <div th:if="${character != null and !character.empty}">
             <table border="1">
                 <tr>
-                    <th th:text="#{character.form_image}"></th>
-                    <th th:text="#{character.form_name}"></th>
-                    <th th:text="#{character.form_details}"></th>
-                    <th th:text="#{character.form_edit}"></th>
-                    <th th:text="#{character.form_delete}"></th>
+                    <th>[[#{character.form_image}]]</th>
+                    <th>[[#{character.form_name}]]</th>
+                    <th>[[#{character.form_details}]]</th>
+                    <th sec:authorize="hasRole('ROLE_ADMIN')">[[#{character.form_edit}]]</th>
+                    <th sec:authorize="hasRole('ROLE_ADMIN')">[[#{character.form_delete}]]</th>
                 </tr>
                 <tr th:each="characters: ${character}">
                     <td><img th:attr="src=@{'image/charactersImages/'+${characters.image}}" alt="sin imagen disponible" height="100" width="100"/></td>
                     <td th:text="${characters.name}"></td>
                     <td> <a th:href="@{/details_characters(id_character=${characters.id_character})}" th:text="#{action.details}"></a></td>
-                    <td> <a th:href="@{/edit_characters(id_character=${characters.id_character})}" th:text="#{action.edit}"></a></td>
-                    <td> <a th:href="@{/delete_characters(id_character=${characters.id_character})}" th:text="#{action.delete}"></a></td>
+                    <td sec:authorize="hasRole('ROLE_ADMIN')"><a th:href="@{/edit_characters(id_character=${characters.id_character})}" th:text="#{action.edit}"></a></td>
+                    <td sec:authorize="hasRole('ROLE_ADMIN')"><a th:href="@{/delete_characters(id_character=${characters.id_character})}" th:text="#{action.delete}"></a></td>
                 </tr>
             </table>            
         </div>

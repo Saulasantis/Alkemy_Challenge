@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
-      xmlns="http://www.w3.org/1999/xhtml">
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
     <head>
         <title>Listado de Peliculas o Series</title>
         <meta charset="UTF-8"/>
@@ -10,26 +11,26 @@
         <header th:replace="layout/template :: header"></header>   
         <h1 th:text="#{titulo.principal_h1}"></h1>
         <h2 th:text="#{list_of_movies.titulo.h2}"></h2>
-        <a th:href="@{/add_movies}" th:text="#{list_of_movies.create}"></a>
+        <a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/add_movies}" th:text="#{list_of_movies.create}"></a>
         <br></br>
         
         <div th:if="${movies_or_series != null and !movies_or_series.empty}">
             <table border="1">
                 <tr>
-                    <th th:text="#{list_of_movies.form_image}"></th>
-                    <th th:text="#{list_of_movies.form_title}"></th>
-                    <th th:text="#{list_of_movies.form_creation_date}"></th>
-                    <th th:text="#{list_of_movies.form_details}"></th>
-                    <th th:text="#{list_of_movies.form_edit}"></th>
-                    <th th:text="#{list_of_movies.form_delete}"></th>
+                    <th >[[#{list_of_movies.form_image}]]</th>
+                    <th >[[#{list_of_movies.form_title}]]</th>
+                    <th >[[#{list_of_movies.form_creation_date}]]</th>
+                    <th >[[#{list_of_movies.form_details}]]</th>
+                    <th sec:authorize="hasRole('ROLE_ADMIN')">[[#{list_of_movies.form_edit}]]</th>
+                    <th sec:authorize="hasRole('ROLE_ADMIN')">[[#{list_of_movies.form_delete}]]</th>
                 </tr>
                 <tr th:each="moviesOrSeries: ${movies_or_series}">
                     <td><img th:attr="src=@{'image/moviesImages/'+${moviesOrSeries.image}}" alt="sin imagen disponible" height="130" width="100"/></td>
                     <td th:text="${moviesOrSeries.title}"></td>
                     <td th:text="${moviesOrSeries.creation_date}"></td>
-                    <td> <a th:href="@{/details_movies(id_movies=${moviesOrSeries.id_movies})}" th:text="#{action.details}"></a></td>
-                    <td> <a th:href="@{/edit_movies(id_movies=${moviesOrSeries.id_movies})}" th:text="#{action.edit}"></a></td>
-                    <td> <a th:href="@{/delete_movies(id_movies=${moviesOrSeries.id_movies})}" th:text="#{action.delete}"></a></td>
+                    <td><a th:href="@{/details_movies(id_movies=${moviesOrSeries.id_movies})}" th:text="#{action.details}"></a></td>
+                    <td sec:authorize="hasRole('ROLE_ADMIN')"><a th:href="@{/edit_movies(id_movies=${moviesOrSeries.id_movies})}" th:text="#{action.edit}"></a></td>
+                    <td sec:authorize="hasRole('ROLE_ADMIN')"><a th:href="@{/delete_movies(id_movies=${moviesOrSeries.id_movies})}" th:text="#{action.delete}"></a></td>
                 </tr>
             </table>            
         </div>
