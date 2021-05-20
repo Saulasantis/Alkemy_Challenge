@@ -26,7 +26,7 @@
                     <th th:text="#{details.form_associated_movies}"></th>
                 </tr>
                 <tr th:each="character: ${characters}">
-                    <td th:text="${characters.image}"></td>
+                    <td><img th:attr="src=@{'image/charactersImages/'+${characters.image}}" alt="sin imagen disponible" height="100" width="100"/></td>
                     <td th:text="${characters.name}"></td>
                     <td th:text="${characters.age}"></td>
                     <td th:text="${characters.weight}"></td>

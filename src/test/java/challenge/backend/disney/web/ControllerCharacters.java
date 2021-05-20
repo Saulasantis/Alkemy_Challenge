@@ -47,7 +47,7 @@ public class ControllerCharacters {
     @GetMapping("/delete_characters")
     public String delete_characters(Characters characters) {
         characterService.deleteCharacters(characters);
-        return "redirect:/characters";
+        return "redirect:/list_of_characters";
     }
 
     @GetMapping("/details_characters")

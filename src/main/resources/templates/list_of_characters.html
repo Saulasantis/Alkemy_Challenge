@@ -10,9 +10,23 @@
         <header th:replace="layout/template :: header"></header>   
         <h1 th:text="#{titulo.principal_h1}"></h1>
         <h2 th:text="#{characters.titulo.h2}"></h2>
+        <div>
+            <h3>Busqueda de Personajes</h3>
+            <b>Nombre:</b>
+            <input type="text"/>
+            <br>
+            <select>
+                <option selected>Elije el parametro de busqueda</option>
+                <option >Edad</option>
+                <option >Peso</option>
+                <option >Peliculas/Series</option>
+            </select>
+            <br></br>
+            <input type="submit" value="Buscar"/>
+        </div>
+        <br></br>     
         <a th:href="@{/add_character}" th:text="#{character.create}"></a>
         <br></br>
-        
         <div th:if="${character != null and !character.empty}">
             <table border="1">
                 <tr>
@@ -23,7 +37,7 @@
                     <th th:text="#{character.form_delete}"></th>
                 </tr>
                 <tr th:each="characters: ${character}">
-                    <td><img th:attr="src=@{'image/'+${characters.image}}" alt="sin imagen disponible" height="100" width="100"/></td>
+                    <td><img th:attr="src=@{'image/charactersImages/'+${characters.image}}" alt="sin imagen disponible" height="100" width="100"/></td>
                     <td th:text="${characters.name}"></td>
                     <td> <a th:href="@{/details_characters(id_character=${characters.id_character})}" th:text="#{action.details}"></a></td>
                     <td> <a th:href="@{/edit_characters(id_character=${characters.id_character})}" th:text="#{action.edit}"></a></td>
@@ -34,7 +48,7 @@
         <div th:if="${character == null or character.empty}">
             [[#{character.empty_list}]]
         </div>
-        
+
         <footer th:replace="layout/template :: footer"></footer>
     </body>
 </html>
