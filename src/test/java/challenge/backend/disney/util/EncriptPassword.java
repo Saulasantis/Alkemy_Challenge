@@ -8,10 +8,10 @@ public class EncriptPassword {
 
         var password = "1234";
         System.out.println("password: " + password);
-        System.out.println("encripted password: " + encripPassword(password));
+        System.out.println("encripted password: " + encriptPassword(password));
     }
 
-    public static String encripPassword(String password) {
+    public static String encriptPassword(String password) {
         BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
         return encoder.encode(password);
     }

@@ -17,7 +17,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Service("userDetailsService")
 @Slf4j
-public class UserService implements UserDetailsService {
+public class UsersService implements UserDetailsService {
 
     @Autowired
     private UsersDao usersDao;
