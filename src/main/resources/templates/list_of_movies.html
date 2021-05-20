@@ -24,7 +24,7 @@
                     <th th:text="#{list_of_movies.form_delete}"></th>
                 </tr>
                 <tr th:each="moviesOrSeries: ${movies_or_series}">
-                    <td th:text="${moviesOrSeries.image}"></td>
+                    <td><img th:attr="src=@{'image/moviesImages/'+${moviesOrSeries.image}}" alt="sin imagen disponible" height="130" width="100"/></td>
                     <td th:text="${moviesOrSeries.title}"></td>
                     <td th:text="${moviesOrSeries.creation_date}"></td>
                     <td> <a th:href="@{/details_movies(id_movies=${moviesOrSeries.id_movies})}" th:text="#{action.details}"></a></td>

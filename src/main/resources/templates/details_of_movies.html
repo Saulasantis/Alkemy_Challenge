@@ -25,7 +25,7 @@
                     <th>[[#{details.movies.table_associated_characters}]]</th>
                 </tr>
                 <tr th:each="movies_or_series: ${moviesOrSeries}">
-                    <td th:text="${moviesOrSeries.image}"></td>
+                    <td><img th:attr="src=@{'image/moviesImages/'+${moviesOrSeries.image}}" alt="sin imagen disponible" height="130" width="100"/></td>
                     <td th:text="${moviesOrSeries.title}"></td>
                     <td th:text="${moviesOrSeries.creation_date}"></td>
                     <td th:text="${moviesOrSeries.qualification}"></td>
